@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Composer Install
-        run: "composer update"
+        run: "composer update --no-dev"
 
       - name: test Ibis Next execution
         run: |
