@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.2.1 - 10th September 2024
+- Upgrading to Pest3 and PHPunit 11(PHP Testing)
+
 ## 1.2.0 - 10th September 2024
 - Embed images for EPUB
 - Fix loading image via relative path
