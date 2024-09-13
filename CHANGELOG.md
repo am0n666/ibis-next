@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.0.1 - 13th September 2024
+- Check if configuration exists
+- Update stubs directory with sample images
+- Update the version for `--version`
+- update highlight js to 9.18.1 (latest version for 9 major rel)
+
+
 ## 2.0.0 - 13th September 2024
 - Upgrading to Pest3 and PHPunit 11(PHP Testing)
 - Dropping support for PHP 8.1
