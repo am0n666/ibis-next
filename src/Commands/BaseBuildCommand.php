@@ -44,7 +44,17 @@ class BaseBuildCommand extends Command
         $this->disk = new Filesystem();
         $this->output = $output;
 
-        $this->config = Config::load($input->getOption('workingdir'));
+        $workingDir = $input->getOption('workingdir');
+        try {
+            $this->config = Config::load($workingDir);
+        } catch (\Exception) {
+            $this->output->writeln('<error>Error, check if the ibis.php file exist into the ' . $workingDir . ' directory.</error>');
+            $this->output->writeln('<info>Did you run `ibis-next init`?</info>');
+            return false;
+
+        }
+
+
         $this->output->writeln('<info>Loading config/assets from: ' . $this->config->workingPath . '</info>');
         $this->output->writeln('<info>Loading config file from: ' . $this->config->ibisConfigPath . '</info>');
         if ($this->config->setContentPath($input->getOption('content')) === false) {

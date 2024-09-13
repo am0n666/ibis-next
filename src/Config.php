@@ -24,7 +24,12 @@ class Config
         }
 
         $this->ibisConfigPath = self::buildPath($this->workingPath, 'ibis.php');
-        $this->config = require $this->ibisConfigPath;
+        if (file_exists($this->ibisConfigPath)) {
+            $this->config = require $this->ibisConfigPath;
+        } else {
+            throw new \Exception("The file " . $this->ibisConfigPath . " doesn't exists.");
+        }
+
     }
 
     public static function load($directory = ""): self
