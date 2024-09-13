@@ -1,8 +1,9 @@
 # Changelog
 
-## 2.0.0 - 11th September 2024
+## 2.0.0 - 13th September 2024
 - Upgrading to Pest3 and PHPunit 11(PHP Testing)
 - Dropping support for PHP 8.1
+- Updating Rector rules for PHP >= 8.2
 
 ## 1.2.0 - 10th September 2024
 - Embed images for EPUB
