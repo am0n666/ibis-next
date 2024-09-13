@@ -57,4 +57,6 @@ ibis-next epub -c ../your-dir-with-markdown-files -d ../myibisbook
 
 You can combine the usage of the `-c` option for defining the content directory and the `-d` option for defining the working directory.
 
->{notice} You can organize your Markdown files in your content directory in subfolders.
+:::tip
+You can organize your Markdown files in your content directory in subfolders.
+:::

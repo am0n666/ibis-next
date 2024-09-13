@@ -6,8 +6,9 @@ title: Installing Ibis Next
 
 Before you begin, ensure that you have PHP 8.1 or above installed on your system, and make sure that the gd extension is enabled in your `php.ini` file.
 
->{notice} For more detailed information, refer to the [Ibis Next GitHub repository](https://github.com/Hi-Folks/ibis-next).
-
+:::note
+For more detailed information, refer to the [Ibis Next GitHub repository](https://github.com/Hi-Folks/ibis-next).
+:::
 
 
 ### Installing ibis-next locally
