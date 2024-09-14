@@ -176,7 +176,7 @@ class InitCommand extends Command
         $io->success('✅ Done!');
         $io->note(
             'You can start building your content (markdown files) into the directory ' . $contentPath . PHP_EOL .
-            "You can edit the configuration, for example changing the title, the cover etc. editing the file " . $ibisConfigPath,
+            "You can change the configuration, for example by changing the title, the cover etc. editing the file " . $ibisConfigPath,
         );
 
         return Command::SUCCESS;
