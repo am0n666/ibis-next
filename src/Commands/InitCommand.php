@@ -8,11 +8,10 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Style\SymfonyStyle;
 
 class InitCommand extends Command
 {
-    private ?\Symfony\Component\Console\Output\OutputInterface $output = null;
-
     private ?\Illuminate\Filesystem\Filesystem $disk = null;
 
 
@@ -44,13 +43,32 @@ class InitCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->disk = new Filesystem();
-        $this->output = $output;
+        $io = new SymfonyStyle($input, $output);
+        $io->title('Ibis Next - Init');
 
         $workingPath = $input->getOption('workingdir');
         if ($workingPath === "") {
             $workingPath = "./";
         } elseif (!is_dir($workingPath)) {
-            $workingPath = "./";
+            $io->warning("The working directory " . $workingPath . " doesn't exists.");
+            $confirm = $io->choice(
+                'Do you want to create it (or exit, or use current dir)?',
+                ["yes" => "Yes","exit" => "Exit", "current" => "Use the current directory"],
+                "yes",
+            );
+            switch ($confirm) {
+                case "yes":
+                    mkdir($workingPath, recursive: true);
+                    $io->text("Created the <strong>" . $workingPath . "</strong> directory.");
+                    break;
+                case "current":
+                    $workingPath = "./";
+                    $io->text("Using the " . $workingPath . " directory.");
+                    break;
+                default:
+                    $io->text("Exit. bye");
+                    return Command::INVALID;
+            }
         }
 
         $ibisConfigPath = Config::buildPath(
@@ -65,14 +83,16 @@ class InitCommand extends Command
             $workingPath,
             'assets',
         );
+        $io->section('Creating directory/files');
 
-        $this->output->writeln('<info>Creating directory/files for:</info>');
-        $this->output->writeln('<info>✨ config/assets directory as: ' . $assetsPath . '</info>');
+        $io->text('✨ Config and assets directory:');
+        $io->text('    ' . $assetsPath);
+
+
 
         if ($this->disk->isDirectory($assetsPath)) {
-            $this->output->writeln('');
-            $this->output->writeln('<comment>Project already initialised!</comment>');
-
+            $io->newLine();
+            $io->warning('Project already initialised!');
             return Command::INVALID;
         }
 
@@ -83,6 +103,9 @@ class InitCommand extends Command
         $this->disk->makeDirectory(
             Config::buildPath($assetsPath, 'fonts'),
         );
+        $this->disk->makeDirectory(
+            Config::buildPath($assetsPath, 'images'),
+        );
 
         $assetsToCopy = [
             'cover.jpg',
@@ -91,25 +114,40 @@ class InitCommand extends Command
             'theme-light.html',
             'style.css',
             'theme-html.html',
+            'images/aside-examples.png',
+            'images/ibis-next-cover.png',
+            'images/ibis-next-setting-page-header.png',
         ];
+        $dirAssetsStubs = Config::buildPath(
+            __DIR__,
+            '..',
+            '..',
+            'stubs/assets',
+        );
+        Config::buildPath(
+            $dirAssetsStubs,
+            'images',
+        );
 
-        foreach ($assetsToCopy as $assetToCopy) {
-            $this->disk->put(
-                Config::buildPath($assetsPath, $assetToCopy),
-                $this->disk->get(
-                    Config::buildPath(
-                        __DIR__,
-                        '..',
-                        '..',
-                        'stubs/assets',
-                        $assetToCopy,
-                    ),
-                ),
+
+        foreach ($assetsToCopy as $asset) {
+
+            $assetStub = Config::buildPath(
+                $dirAssetsStubs,
+                $asset,
             );
+            if (file_exists($assetStub)) {
+                copy(
+                    $assetStub,
+                    Config::buildPath($assetsPath, $asset),
+                );
+            } else {
+                $io->warning(sprintf("File '%s' not found. I will skip this file.", $asset));
+            }
         }
 
-
-        $this->output->writeln('<info>✨ content directory as: ' . $contentPath . '</info>');
+        $io->text('✨ content directory as:');
+        $io->text('    ' . $contentPath . '');
 
         $this->disk->makeDirectory(
             $contentPath,
@@ -123,7 +161,8 @@ class InitCommand extends Command
             $contentPath,
         );
 
-        $this->output->writeln('<info>✨ config file as: ' . $ibisConfigPath . '</info>');
+        $io->text('✨ Config file:');
+        $io->text('    ' . $ibisConfigPath);
 
         $this->disk->put(
             $ibisConfigPath,
@@ -133,9 +172,12 @@ class InitCommand extends Command
             )),
         );
 
-
-        $this->output->writeln('');
-        $this->output->writeln('<info>✅ Done!</info>');
+        $io->newLine();
+        $io->success('✅ Done!');
+        $io->note(
+            'You can start building your content (markdown files) into the directory ' . $contentPath . PHP_EOL .
+            "You can edit the configuration, for example changing the title, the cover etc. editing the file " . $ibisConfigPath,
+        );
 
         return Command::SUCCESS;
     }
