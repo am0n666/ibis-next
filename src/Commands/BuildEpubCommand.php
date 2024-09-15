@@ -155,24 +155,25 @@ class BuildEpubCommand extends BaseBuildCommand
                 chapterData: $content_start . $chapter["html"] . $content_end,
                 externalReferences: EPub::EXTERNAL_REF_ADD,
             );
-            foreach (Arr::get($chapter, "images", []) as $idxImage => $image) {
-                if (filter_var($image, FILTER_VALIDATE_URL)) {
+            foreach (Arr::get($chapter, "images", []) as $idxImage => $markdownPathImage) {
+                if (filter_var($markdownPathImage, FILTER_VALIDATE_URL)) {
                     continue;
                 }
 
-                if (! $this->isAbsolutePath($image)) {
-                    $image = $this->config->contentPath . "/" . $image;
+                $pathImage = $markdownPathImage;
+                if (! $this->isAbsolutePath($markdownPathImage)) {
+                    $pathImage = $this->config->contentPath . "/" . $markdownPathImage;
                 }
 
-                if (!file_exists($image)) {
+                if (!file_exists($pathImage)) {
                     continue;
                 }
 
                 $book->addLargeFile(
-                    $image,
+                    $markdownPathImage,
                     "image-" . $key . "-" . $idxImage,
-                    $image,
-                    mime_content_type($image),
+                    $pathImage,
+                    mime_content_type($pathImage),
                 );
             }
 
