@@ -43,12 +43,12 @@ composer require hi-folks/ibis-next
 
 If you prefer to install the composer package globally, use the `global` option with the `composer require` command:
 
-~~~shell
+~~~sh
 composer global require hi-folks/ibis-next
 ~~~
 
 When Ibis Next is installed globally, you can launch and run it using the `ibis-next` command:
 
-~~~shell
+~~~sh
 ibis-next list
 ~~~

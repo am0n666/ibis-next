@@ -100,18 +100,14 @@ If you installed Ibis Next globally, run the `init` command inside an empty dire
 ibis-next init
 ~~~
 
-This will generate the following files and directories:
+The `ibis-next init` command will generate the following files and directories:
 
-- `/assets`
-- `/assets/fonts`
-- `/assets/cover.jpg`
-- `/assets/cover-ibis.webp`
-- `/assets/theme-light.html`
-- `/assets/theme-dark.html`
-- `/assets/style.css`
-- `/assets/theme-html.html`
-- `/content`
-- `/ibis.php`
+- The `assets` directory, which contains theme files used for building the PDF and EPUB files. Since the process involves an intermediary step that temporarily converts the content to HTML, the theme files are in HTML and CSS to ensure the correct styling for the output files.
+- The `assets/fonts` directory, where you can download and use your TrueType Font (TTF) files.
+- The `assets/cover.jpg`, which is a sample book cover image.
+- The `assets/images` directory, containing sample images used in the sample book.
+- The `content` directory, which includes some sample Markdown files. You can edit these files or create new ones.
+- The `ibis.php` file, which contains the Ibis Next configuration.
 
 Configure your eBook by editing the `ibis.php` configuration file.
 
