@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.0.3 - WIP
+- Fix relative image for EPUB with custom working directory
+
 ## 2.0.2 - 14th September 2024
 - Restyle init command with SymfonyStyle
 - The init command creates automatically the working directory
