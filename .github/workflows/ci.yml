@@ -9,10 +9,9 @@ jobs:
     strategy:
       matrix:
         operating-system: ['ubuntu-latest', 'windows-latest', 'macos-14']
-        php-versions: [ '8.3', '8.2' ]
+        php-versions: [ '8.4', '8.3', '8.2' ]
     name: P${{ matrix.php-versions }} - ${{ matrix.operating-system}}
     steps:
-      # This is required as this package does not support PHP 8 (yet)
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
