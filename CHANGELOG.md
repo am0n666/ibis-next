@@ -1,7 +1,9 @@
 # Changelog
 
-## 2.0.3 - WIP
+## 2.0.3 - 20th November 2024
 - Fix relative image for EPUB with custom working directory
+- Update readme for frontmatter options
+- Welcome PHP 8.4
 
 ## 2.0.2 - 14th September 2024
 - Restyle init command with SymfonyStyle
