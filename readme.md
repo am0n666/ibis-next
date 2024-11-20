@@ -7,7 +7,7 @@
 ## Create eBooks with Markdown
 
 Ibis Next is an open-source tool developed for ebook creators who want to focus on content creation.
-Ibis Next supports writing in Markdown format and can generate ebooks in PDF, EPUB or HTML format. The tool aims to simplify the ebook creation process, allowing the writers to concentrate on their content while providing functionality for converting it into polished ebooks efficiently.
+Ibis Next supports writing in Markdown and can generate ebooks in PDF, EPUB, or HTML format. The tool aims to simplify the ebook creation process, allowing writers to concentrate on their content while providing functionality for converting it into polished ebooks efficiently.
 
 ### What is Ibis Next?
 
@@ -15,23 +15,23 @@ Ibis Next is a PHP-based tool that simplifies the entire eBook creation process.
 
 ### Key features
 
-- **Markdown**: Write your content using the simplicity and versatility of Markdown.
-- **Automatic Generation**: Effortlessly create PDF, EPUB or HTML files with a single command using the `ibis-next pdf` command or `ibis-next epub` or `ibis-next html`.
+- **Markdown**: Write your content using Markdown's simplicity and versatility.
+- **Automatic Generation**: Effortlessly create PDF, EPUB, or HTML files with a single command using the `ibis-next pdf` command or `ibis-next epub` or `ibis-next html`.
 - **Aesthetic Appeal**: create your eBooks with a custom cover photo, a clickable auto-generated table of contents, and code syntax highlighting.
-- **Theme Options**: Choose between two visually appealing themes - Light and Dark (theme support available for PDFs).
+- **Theme Options**: Choose between two visually appealing themes, Light and Dark (theme support is available for PDFs).
 
 ### Why Choose Ibis Next?
 
 Ibis Next is a powerful tool for effortlessly creating digital books (e-books) in EPUB, PDF, and HTML formats. With Ibis Next, writers can concentrate on crafting content without worrying about formatting. The content is authored in Markdown format, allowing for simplicity and flexibility.
 
-Ibis Next seamlessly handles the conversion process, ensuring a hassle-free transition from Markdown to the correct EPUB, PDF and HTML formats. Embracing markdown streamlines the writing process and enhances collaboration and ease of editing, making it an ideal choice for authors seeking efficiency and focusing on content creation.
+Ibis Next seamlessly handles the conversion process, ensuring a hassle-free transition from Markdown to the correct EPUB, PDF, and HTML formats. Embracing markdown streamlines the writing process and enhances collaboration and ease of editing, making it an ideal choice for authors seeking efficiency and focusing on content creation.
 
 Get ready to revolutionize your eBook creation process with Ibis Next!
 
 Mohamed Said created the Ibis project. The sources of the Ibis project are https://github.com/themsaid/ibis.
 Thank you to Mohamed for creating this tool.
 
-We forked the repository to speed up the process of supporting PHP 8.2, **PHP 8.3**, **Laravel 11**, **Symfony 7**, **Commonmark 2**, and other dependencies upgrades.
+We forked the repository to speed up the process of supporting PHP 8.2, PHP 8.3, **PHP 8.4**, **Laravel 11**, **Symfony 7**, **Commonmark 2**, and other dependencies upgrades.
 With Ibis Next, we also added the **support for generating the EPUB format** and **HTML format**. So, with Ibis Next, you can create Markdown files and export them into PDF, EPUB, and HTML for better compatibility with your devices and software.
 
 ## Installation
@@ -129,6 +129,10 @@ This sample content is taken from [Ibis Next: create your eBooks with Markdown](
 Inside the `content` directory, you can write multiple `.md` files. Ibis uses the headings to divide the book into parts and chapters:
 
 ~~~markdown
+---
+title: My Title
+---
+
 # Part 1
 
 `<h1>` tags define the start of a part. A separate PDF page will be generated to print the part title and any content below.
@@ -258,6 +262,35 @@ This is an example.
 ~~~
 
 ![Setting the page header](https://raw.githubusercontent.com/hi-folks/ibis-next/main/art/ibis-next-setting-page-header.png)
+
+### Using Frontmatter
+
+In Markdown, **frontmatter** refers to a block of metadata at the very beginning of a file, typically enclosed within triple dashes (`---`). It provides structured information about the document that tools or frameworks can use to customize how the content is processed or displayed.
+
+For example, in **Ibis Next**, the `title` specified in the frontmatter has two primary uses:
+
+1. **Rendering Page Headers**:
+   If page headers are enabled in your Ibis Next configuration, the `title` from the frontmatter will be displayed as part of the page's header. This helps readers quickly understand the context or content of the page they are viewing.
+2. **Generating the EPUB Index**:
+   When you export your content to an EPUB file, the `title` from the frontmatter is also used to create the index entries. This ensures that each section or page is properly labeled in the EPUB's table of contents, making it easier for readers to navigate the book.
+
+### Example
+
+Here’s a sample frontmatter in a Markdown file:
+
+```markdown
+---
+title: "Introduction to Markdown"
+---
+
+# Introduction to Markdown
+
+Markdown is a lightweight markup language...
+```
+
+In this example, the `title` will be used for the page headers (if enabled) and the EPUB index.
+
+Using frontmatter effectively ensures that your documents are well-structured and displayed consistently across different output formats.
 
 ### Using Fonts
 
