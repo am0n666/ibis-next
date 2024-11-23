@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.4 - 23th November 2024
+- Fine tuning for PHP 8.4
+- Adding "Books created with Ibis Next" section in readme
+
 ## 2.0.3 - 20th November 2024
 - Fix relative image for EPUB with custom working directory
 - Update readme for frontmatter options
