@@ -34,6 +34,20 @@ Thank you to Mohamed for creating this tool.
 We forked the repository to speed up the process of supporting PHP 8.2, PHP 8.3, **PHP 8.4**, **Laravel 11**, **Symfony 7**, **Commonmark 2**, and other dependencies upgrades.
 With Ibis Next, we also added the **support for generating the EPUB format** and **HTML format**. So, with Ibis Next, you can create Markdown files and export them into PDF, EPUB, and HTML for better compatibility with your devices and software.
 
+## Books created with Ibis Next 📚
+
+The following books have been created using **Ibis Next**. This list highlights the versatility and potential of Ibis Next in crafting professional and beautiful books for various purposes.
+
+### Featured Books
+
+📚 **PHP 8 in a Nutshell**
+- **Author(s):** Amit D. Merchant
+- **Description:** "PHP 8 in a nutshell" is a book that neatly puts together all the new and important features of PHP 8 clearly and to the point without all the fluff. The book covers all of PHP 8's developer-facing features in a concise format that covers the important nitty-gritty and what you would want in a real-world scenario. The book also covers the newest minor releases, PHP 8.1, 8.2, 8.3, and 8.4, and the features and enhancements that come with them.
+- **Formats available**: PDF and EPUB
+- **Link:** [View Book](https://amitmerchant.gumroad.com/l/php8-in-a-nutshell)
+
+
+
 ## Installation
 
 Before you begin, ensure that you have PHP 8.1 or above installed on your system, and ensure the gd extension is enabled in your `php.ini` file.
