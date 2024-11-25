@@ -46,7 +46,12 @@ The following books have been created using **Ibis Next**. This list highlights 
 - **Formats available**: PDF and EPUB
 - **Link:** [View Book](https://amitmerchant.gumroad.com/l/php8-in-a-nutshell)
 
+📚 **The Web Dev's Guide to Freelancing**
 
+- **Author(s):** Ash Allen
+- **Description:** Learn proven strategies, tips, and tricks you can use to launch your freelance web development career and build a successful business from scratch.
+- **Formats available**: PDF and EPUB
+- **Link:** [View Book](https://web-dev-freelancing.com/)
 
 ## Installation
 
