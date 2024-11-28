@@ -113,7 +113,7 @@ class BuildEpubCommand extends BaseBuildCommand
 
         $book->addCSSFile("style.css", "css1", $this->getStyle($this->config->workingPath, "style"));
         //$cssData = file_get_contents("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.css");
-        $cssData = file_get_contents("https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.16.2/build/styles/github-gist.min.css");
+        $cssData = file_get_contents("https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.5/build/styles/github-gist.min.css");
 
         $book->addCSSFile("github.css", "css2", $cssData);
         //
@@ -149,6 +149,8 @@ class BuildEpubCommand extends BaseBuildCommand
         foreach ($chapters as $key => $chapter) {
             $this->output->writeln('<fg=yellow>==></> ❇️ ' . $chapter["mdfile"] . ' ...');
 
+            // fixing html
+            $chapter["html"] = str_replace("</span> <span", "</span>&nbsp;<span", $chapter["html"]);
             $book->addChapter(
                 chapterName: Arr::get($chapter, "frontmatter.title", "Chapter " . ($key + 1)),
                 fileName: "Chapter" . $key . ".html",

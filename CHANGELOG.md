@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.0.5 - 28th November 2024
+- fix spaces in code block for epub
+
 ## 2.0.4 - 23th November 2024
 - Fine tuning for PHP 8.4
 - Adding "Books created with Ibis Next" section in readme
