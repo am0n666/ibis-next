@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.0.6 - 2nd December 2024
+- fix SSL error using external CSS for epub creation
+
 ## 2.0.5 - 28th November 2024
 - fix spaces in code block for epub
 

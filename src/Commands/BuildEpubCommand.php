@@ -94,7 +94,7 @@ class BuildEpubCommand extends BaseBuildCommand
         . "<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:epub=\"http://www.idpf.org/2007/ops\">\n"
         . "<head>"
         . "<meta http-equiv=\"Default-Style\" content=\"text/html; charset=utf-8\" />\n"
-        . "<link rel=\"stylesheet\" type=\"text/css\" href=\"github.css\" />\n"
+        . "<link rel=\"stylesheet\" type=\"text/css\" href=\"codeblock.css\" />\n"
         . "<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" />\n"
         . "<title>" . $this->config->title() . "</title>\n"
         . "</head>\n"
@@ -112,11 +112,13 @@ class BuildEpubCommand extends BaseBuildCommand
         //$book->setLanguage("en");
 
         $book->addCSSFile("style.css", "css1", $this->getStyle($this->config->workingPath, "style"));
-        //$cssData = file_get_contents("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.css");
-        $cssData = file_get_contents("https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.5/build/styles/github-gist.min.css");
+        // https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.5/build/styles/github-gist.min.css
+        $book->addCSSFile(
+            "codeblock.css",
+            "css2",
+            $this->getStyle($this->config->workingPath, "highlight.codeblock.min"),
+        );
 
-        $book->addCSSFile("github.css", "css2", $cssData);
-        //
         $cover = $content_start . "<h1>" . $this->config->title() . "</h1>\n";
         if ($this->config->author()) {
             $cover .= "<h2>By: " . $this->config->author() . "</h2>\n";

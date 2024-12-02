@@ -113,6 +113,7 @@ class InitCommand extends Command
             'theme-dark.html',
             'theme-light.html',
             'style.css',
+            'highlight.codeblock.min.css',
             'theme-html.html',
             'images/aside-examples.png',
             'images/ibis-next-cover.png',
