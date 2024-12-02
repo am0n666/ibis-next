@@ -32,6 +32,7 @@
         "ext-json": "*",
         "ext-mbstring": "*",
         "ext-zlib": "*",
+        "ext-openssl": "*",
         "hi-folks/phpepub": "^1.0.0",
         "illuminate/filesystem": "^10.0|^11.0",
         "illuminate/support": "^10.0|^11.0",
