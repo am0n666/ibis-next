@@ -114,9 +114,12 @@ class BuildEpubCommand extends BaseBuildCommand
         $book->addCSSFile("style.css", "css1", $this->getStyle($this->config->workingPath, "style"));
         // https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.5/build/styles/github-gist.min.css
         $book->addCSSFile(
-            "codeblock.css", "css2", $this->getStyle($this->config->workingPath, "highlight.codeblock.min"));
+            "codeblock.css",
+            "css2",
+            $this->getStyle($this->config->workingPath, "highlight.codeblock.min"),
+        );
 
-            $cover = $content_start . "<h1>" . $this->config->title() . "</h1>\n";
+        $cover = $content_start . "<h1>" . $this->config->title() . "</h1>\n";
         if ($this->config->author()) {
             $cover .= "<h2>By: " . $this->config->author() . "</h2>\n";
         }
