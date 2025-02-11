@@ -189,6 +189,16 @@ HTML,
             );
         }
 
+        $pdf->SetHTMLHeader('', );
+        if (array_key_exists('header', $config)) {
+            $pdf->SetHTMLHeader(
+                '
+                    <div style="' . $config['header'] . '">
+                        ' . $config["title"] . '
+                    </div>',
+            );
+        }
+
         $this->output->writeln('<fg=yellow>==></> Writing PDF To Disk ...');
 
         $this->output->writeln('');
