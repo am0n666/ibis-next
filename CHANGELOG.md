@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.0.7 - 11th February 2025
+- Fix Page Header for Table of Content
+
 ## 2.0.6 - 2nd December 2024
 - fix SSL error using external CSS for epub creation
 
