@@ -1,34 +1,37 @@
 <header>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/sunburst.min.css">
+  <link rel="stylesheet" href="./fonts/GeorgiaPro/georgia-pro.css">
+  <link rel="stylesheet" href="./fonts/OpenSans/open-sans.css">
   <style>
     body {
-      font-family: calibri;
-      font-size: 14px;
+      font-family: 'Georgia Pro', serif;
+      font-size: 16px;
       line-height: 1.4;
       background-color: #011627;
       color: #c1d4ea;
     }
 
     h1, h2 {
-      font-family: times;
+      font-family: 'Open Sans', sans-serif;
       color: #fff;
+      font-weight: bold;
     }
 
     h3 {
-      font-family: calibri;
+      font-family: 'Open Sans', sans-serif;
       color: #fff;
       font-weight: bold;
     }
 
     h1 {
-      font-size: 35px;
+      font-size: 24px;
       padding-top: 0;
-      padding-bottom: 70px;
+      padding-bottom: 50px;
     }
 
     h2 {
       text-align: left;
-      font-size: 20px;
+      font-size: 21px;
       padding-top: 0;
       padding-bottom: 30px;
     }
@@ -42,6 +45,8 @@
 
     p, ul, ol {
       margin-bottom: 20px;
+      widows: 2;
+      orphans: 2;
     }
 
     pre {
@@ -70,7 +75,7 @@
     }
 
     .mpdf_toc {
-      font-family: calibri;
+      font-family: 'Georgia Pro', serif;
       color: #c1d4ea;
     }
 
@@ -89,21 +94,21 @@
 
     span.mpdf_toc_t_level_0, span.mpdf_toc_p_level_0 {
       color: #c1d4ea;
-      font-family: calibri;
+      font-family: 'Georgia Pro', serif;
       font-weight: bold;
       font-style: normal;
     }
 
     span.mpdf_toc_t_level_1, span.mpdf_toc_p_level_1 {
       color: #c1d4ea;
-      font-family: calibri;
+      font-family: 'Georgia Pro', serif;
       font-weight: normal;
       font-style: normal;
     }
 
     span.mpdf_toc_t_level_2, span.mpdf_toc_p_level_2 {
       color: #c1d4ea;
-      font-family: calibri;
+      font-family: 'Georgia Pro', serif;
       font-weight: normal;
       font-style: normal;
     }
@@ -162,7 +167,6 @@
     }
 
     blockquote.notice {
-
       border-left: solid 5px #5b87dd;
       padding-top: 20px;
       padding-bottom: 20px;
@@ -175,7 +179,6 @@
     }
 
     blockquote.note {
-
       border-left: solid 5px #5b87dd;
       padding-top: 20px;
       padding-bottom: 20px;
@@ -192,7 +195,6 @@
     }
 
     blockquote.tip {
-
       border-left: solid 5px #ab11f1;
       padding-top: 20px;
       padding-bottom: 20px;
@@ -209,7 +211,6 @@
     }
 
     blockquote.caution {
-
       border-left: solid 5px #f1ae2f;
       padding-top: 20px;
       padding-bottom: 20px;
@@ -226,7 +227,6 @@
     }
 
     blockquote.danger {
-
       border-left: solid 5px #dd787d;
       padding-top: 20px;
       padding-bottom: 20px;
@@ -263,6 +263,10 @@
       text-align: left;
       background-color: #001321;
       color: white;
+    }
+
+    h1, h2, h3 {
+      page-break-after: avoid;
     }
   </style>
 
