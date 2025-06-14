@@ -1,0 +1,91 @@
+@import "./fonts/Bookerly/bookerly.css";
+@import "./fonts/OpenSans/open-sans.css";
+
+html, body {
+    font-family: 'Bookerly', serif;
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin: 1.5em;
+    padding: 0;
+    text-align: justify;
+    color: #252525;
+    hyphens: auto;
+    widows: 2;
+    orphans: 2;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    page-break-before: always;
+    margin-top: 2em;
+    margin-bottom: 0.5em;
+    line-height: 1.2;
+}
+
+h1 { font-size: 1.8em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.3em; }
+h4 { font-size: 1.2em; }
+h5 { font-size: 1.1em; }
+h6 { font-size: 1em; }
+
+p, ul, ol, pre, code {
+    margin-bottom: 1.2em;
+    line-height: 1.6;
+}
+
+blockquote {
+    margin: 1.5em 0;
+    padding: 1em;
+    border-left: 4px solid #ccc;
+    background: #f9f9f9;
+    font-style: italic;
+}
+
+ul, ol {
+    padding-left: 1.5em;
+}
+
+code, pre {
+    font-family: "Courier New", monospace;
+    font-size: 0.95em;
+    background: #f2f2f2;
+    padding: 0.3em 0.6em;
+    border-radius: 3px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5em;
+}
+
+th, td {
+    padding: 0.6em;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1em auto;
+}
+
+a {
+    color: #1a1c3e;
+    text-decoration: underline;
+    word-break: break-word;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 2em 0;
+}
+
+.pagebreak {
+    page-break-after: always;
+}
