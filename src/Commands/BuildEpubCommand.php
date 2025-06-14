@@ -184,6 +184,11 @@ class BuildEpubCommand extends BaseBuildCommand
             //file_put_contents('export/' . "Chapter" . $key . " .html", $content_start . $chapter["html"] . $content_end);
         }
 
+        $this->addFonts(
+            book: $book,
+            currentPath: $currentPath,
+        );
+
         $book->buildTOC(
             title: "Index",
             addReferences: false,
@@ -213,6 +218,32 @@ class BuildEpubCommand extends BaseBuildCommand
     private function getStyle(string $currentPath, string $themeName)
     {
         return $this->disk->get($currentPath . sprintf('/assets/%s.css', $themeName));
+    }
+
+    private function addFonts(EPub $book, string $currentPath): void
+    {
+        $fontsDir = Config::buildPath($currentPath, 'assets', 'fonts');
+        if (! $this->disk->isDirectory($fontsDir)) {
+            return;
+        }
+
+        $iterator = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($fontsDir));
+        foreach ($iterator as $file) {
+            if ($file->isDir()) {
+                continue;
+            }
+
+            $path = $file->getPathname();
+            $relative = ltrim(substr($path, strlen($fontsDir)), '/');
+            $internalPath = 'fonts/' . $relative;
+
+            $book->addLargeFile(
+                $internalPath,
+                'font-' . md5($internalPath),
+                $path,
+                mime_content_type($path),
+            );
+        }
     }
 
 
