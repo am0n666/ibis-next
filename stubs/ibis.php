@@ -15,19 +15,31 @@ return [
      * The list of fonts to be used in the different themes.
      */
     'fonts' => [
-        //        'calibri' => 'Calibri-Regular.ttf',
-        //        'times' => 'times-regular.ttf',
+        'georgia-pro' => [
+            'normal' => 'assets/fonts/GeorgiaPro/GeorgiaPro-Regular.ttf',
+            'bold' => 'assets/fonts/GeorgiaPro/GeorgiaPro-Bold.ttf',
+            'italic' => 'assets/fonts/GeorgiaPro/GeorgiaPro-Italic.ttf',
+            'bold_italic' => 'assets/fonts/GeorgiaPro/GeorgiaPro-BoldItalic.ttf',
+        ],
+        'open-sans' => [
+            'normal' => 'assets/fonts/OpenSans/OpenSans-Regular.ttf',
+            'bold' => 'assets/fonts/OpenSans/OpenSans-Bold.ttf',
+            'italic' => 'assets/fonts/OpenSans-Italic.ttf',
+            'bold_italic' => 'assets/fonts/OpenSans-BoldItalic.ttf',
+        ],
     ],
+
+    'language' => 'en',
 
     /**
      * Document Dimensions.
      */
     'document' => [
         'format' => [210, 297],
-        'margin_left' => 27,
-        'margin_right' => 27,
-        'margin_bottom' => 14,
-        'margin_top' => 14,
+		'margin_left'   => 25,
+		'margin_right'  => 25,
+		'margin_top'    => 20,
+		'margin_bottom' => 25,
     ],
 
     /**
