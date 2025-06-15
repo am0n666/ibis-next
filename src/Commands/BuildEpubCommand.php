@@ -101,9 +101,9 @@ class BuildEpubCommand extends BaseBuildCommand
         . "<body>\n";
         $content_end = "</body></html>";
 
-        $book = new EPub(EPub::BOOK_VERSION_EPUB3, "en", EPub::DIRECTION_LEFT_TO_RIGHT);
+        $book = new EPub(EPub::BOOK_VERSION_EPUB3, $this->config->language(), EPub::DIRECTION_LEFT_TO_RIGHT);
         $book->setIdentifier(md5($this->config->title() . " - " . $this->config->author()), EPub::IDENTIFIER_UUID);
-        $book->setLanguage("en");
+        $book->setLanguage($this->config->language());
         $book->setDescription($this->config->title() . " - " . $this->config->author());
         $book->setTitle($this->config->title());
         //$book->setPublisher("John and Jane Doe Publications", "http://JohnJaneDoePublications.com/");
@@ -111,7 +111,7 @@ class BuildEpubCommand extends BaseBuildCommand
         $book->setIdentifier($this->config->title() . "&amp;stamp=" . time(), EPub::IDENTIFIER_URI);
         //$book->setLanguage("en");
 
-        $book->addCSSFile("style.css", "css1", $this->getStyle($this->config->workingPath, "style"));
+        $book->addCSSFile("style.css", "css1", $this->getStyle($this->config->workingPath, "style-epub"));
         // https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.5/build/styles/github-gist.min.css
         $book->addCSSFile(
             "codeblock.css",
@@ -184,6 +184,8 @@ class BuildEpubCommand extends BaseBuildCommand
             //file_put_contents('export/' . "Chapter" . $key . " .html", $content_start . $chapter["html"] . $content_end);
         }
 
+		$this->addFonts($book, $currentPath);
+
         $book->buildTOC(
             title: "Index",
             addReferences: false,
@@ -215,5 +217,37 @@ class BuildEpubCommand extends BaseBuildCommand
         return $this->disk->get($currentPath . sprintf('/assets/%s.css', $themeName));
     }
 
+    private function addFonts(EPub $book, string $currentPath): void
+    {
+        $fonts = $this->config->fonts();
+    
+        if (!is_array($fonts) || empty($fonts)) {
+            $this->output->writeln('<fg=yellow>==></> No fonts defined in config.');
+            return;
+        }
+    
+        foreach ($fonts as $fontFamily => $variants) {
+            foreach ($variants as $variant => $fontPath) {
+                $absolutePath = $fontPath;
+                if (!str_starts_with($fontPath, $currentPath)) {
+                    $absolutePath = Config::buildPath($currentPath, $fontPath);
+                }
+    
+                if (!file_exists($absolutePath)) {
+                    $this->output->writeln("<fg=red>==></> Font file not found: $absolutePath");
+                    continue;
+                }
+    
+                $book->addLargeFile(
+                    $fontPath,
+                    'font-' . md5($fontFamily . '-' . $variant),
+                    $absolutePath,
+                    mime_content_type($absolutePath)
+                );
+    
+                $this->output->writeln("<fg=cyan>==></> Added font: $fontFamily [$variant]");
+            }
+        }
+    }
 
 }
