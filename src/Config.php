@@ -92,4 +92,19 @@ class Config
         return $this->config['author'];
     }
 
+    /**
+     *
+     */
+    public function language()
+    {
+        return $this->config['language'];
+    }
+
+    /**
+     *
+     */
+    public function fonts(): array
+    {
+        return $this->config['fonts'] ?? [];
+    }
 }
